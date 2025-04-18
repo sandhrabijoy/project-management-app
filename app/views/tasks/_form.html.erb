@@ -4,9 +4,9 @@
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
       <ul>
-      <% @task.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @task.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -15,16 +15,19 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.textarea :description %>
+    <%= f.text_area :description %>
   </div>
+
   <div class="field">
     <%= f.label :status %><br />
-    <%= f.text_field :status %>
+    <%= f.select :status, Task::STATUS_OPTIONS %>
   </div>
-  
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
