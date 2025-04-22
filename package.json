@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.5"
+  },
+  "devDependencies": {
+    "sass": "^1.87.0"
+  },
+  	"scripts": {
+"build": "sass ./app/assets/stylesheets/application.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+}
+}
