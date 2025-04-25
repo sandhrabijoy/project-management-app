@@ -32,6 +32,11 @@ gem "solid_cable"
 
 gem "cssbundling-rails"
 
+# to get slim
+gem "slim-rails"
+
+# gem html2slim
+gem "html2slim", github: "slim-template/html2slim"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
