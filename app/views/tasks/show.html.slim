@@ -1,21 +1,32 @@
-p#notice
-  = notice
-p
-  b
-    | Name:
-  = @task.name
-p
-  b
-    | Description:
-  = @task.description
-p
-  b
-    | Status:
-  = @task.status
-p
-  b
-    | Project:
-  = @task.project
-= link_to 'Edit', edit_project_task_path(@task.project, @task)
-|  | 
-= link_to 'Back', project_tasks_path(@task.project)
+.card.mb-4
+  .card-body
+    - if notice
+      .alert.alert-success
+        p = notice
+
+    .mb-3
+      p
+        b Name:
+        = @task.name
+
+    .mb-3
+      p
+        b Description:
+        = @task.description
+
+    .mb-3
+      p
+        b Status:
+        = @task.status
+
+    .mb-3
+      p
+        b Project:
+        = @task.project.name
+
+    .mt-3
+    .d-flex
+      .mr-3
+        = link_to 'Edit', edit_project_task_path(@task.project, @task), class: "btn btn-warning"
+      .ml-3
+        = link_to 'Back', project_tasks_path(@task.project), class: "btn btn-secondary"
