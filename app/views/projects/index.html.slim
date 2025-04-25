@@ -1,0 +1,15 @@
+.card
+  .card-header.d-flex.justify-content-between.align-items-center
+    h1.card-title.mb-0
+      | Projects
+    |  &lt;%= link_to "New project", new_project_path, class: "btn btn-primary" %&gt; 
+  .card-body
+    #projects.row.row-cols-1.row-cols-md-2.g-4
+      |  &lt;% @projects.each do |project| %&gt; 
+      .col
+        .card.h-100
+          .card-body
+            |  &lt;%= render project %&gt; 
+          .card-footer.text-end
+            |  &lt;%= link_to "Show this project", project, class: "btn btn-outline-primary btn-sm" %&gt; 
+      |  &lt;% end %&gt; 
