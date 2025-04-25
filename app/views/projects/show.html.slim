@@ -1,50 +1,49 @@
-p[style="color: green"]
-  = notice
-h2
-  = @project.name
-p
-  = @project.description
-div
-  = link_to "Edit this project", edit_project_path(@project)
-  |  | 
-  = link_to "Back to projects", projects_path
-  = button_to "Destroy this project", @project, method: :delete
-hr
-h1
-  | New task
-= render 'tasks/form'
-hr
-h1
-  | Listing tasks
-table
-  tr
-    th
-      | Name
-    th
-      | Description
-    th
-      | Status
-    th
-      | Project
-    th
-    th
-    th
-  - @project.tasks.each do |task|
-    - if task.persisted?
-      tr
-        td
-          = task.name
-        td
-          = task.description
-        td
-          = task.status
-        td
-          = task.project.name
-        td
-          = link_to 'Show', [task.project, task]
-        td
-          = link_to 'Edit', edit_project_task_path(task.project, task)
-        td
-          = button_to 'Destroy', [task.project, task], method: :delete, data: { confirm: "Are you sure? This will be permanent" }
-br
-= link_to 'New Task', new_project_task_path(@project)
+- if notice
+  .alert.alert-success
+    = notice
+
+.card.mb-4
+  .card-body
+    h2.card-title
+      = @project.name
+
+    p.card-text
+      = @project.description
+
+    .d-flex.gap-2.mt-3
+      = link_to "Edit this project", edit_project_path(@project), class: "btn btn-outline-primary"
+      = link_to "Back to projects", projects_path, class: "btn btn-outline-secondary"
+      = button_to "Destroy this project", @project, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger"
+
+.card.mb-4
+  .card-body
+    h3.card-title New Task
+    = render 'tasks/form'
+
+.card.mb-4
+  .card-body
+    h3.card-title.mb-3 Listing Tasks
+
+    table.table.table-hover
+      thead
+        tr
+          th Name
+          th Description
+          th Status
+          th Project
+          th
+          th
+          th
+      tbody
+        - @project.tasks.each do |task|
+          - if task.persisted?
+            tr
+              td = task.name
+              td = task.description
+              td = task.status
+              td = task.project.name
+              td = link_to 'Show', [task.project, task], class: "btn btn-sm btn-primary"
+              td = link_to 'Edit', edit_project_task_path(task.project, task), class: "btn btn-sm btn-warning"
+              td = button_to 'Destroy', [task.project, task], method: :delete, data: { confirm: "Are you sure? This will be permanent" }, class: "btn btn-sm btn-danger"
+
+= link_to 'New Task', new_project_task_path(@project), class: "btn btn-success mt-3"
